@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../App';
 import { gastosService } from '../services/api';
@@ -26,6 +27,13 @@ const Dashboard = () => {
 
     cargarMovimientos();
   }, []); // [] - solo al montar, sin repeticiones
+=======
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
+
+const Dashboard = () => {
+  const { user, movements } = useContext(AppContext);
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
 
   return (
     <div className="dashboard animate-fade-in" style={{ padding: '20px 0' }}>
@@ -35,6 +43,7 @@ const Dashboard = () => {
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Buenos días</p>
           <h1 style={{ fontSize: '1.5rem' }}>{user.name}</h1>
         </div>
+<<<<<<< HEAD
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <div className="glass" style={{ width: '45px', height: '45px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <i className="fas fa-bell" style={{ color: '#fbbf24' }}></i>
@@ -43,6 +52,10 @@ const Dashboard = () => {
           <div onClick={logout} className="glass" style={{ width: '45px', height: '45px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
             <i className="fas fa-sign-out-alt" style={{ color: '#ef4444' }}></i>
           </div>
+=======
+        <div className="glass" style={{ width: '45px', height: '45px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <i className="fas fa-bell" style={{ color: '#fbbf24' }}></i>
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
         </div>
       </div>
 
@@ -57,6 +70,10 @@ const Dashboard = () => {
         boxShadow: '0 20px 40px rgba(79, 70, 229, 0.3)',
         marginBottom: '30px'
       }}>
+<<<<<<< HEAD
+=======
+        {/* Abstract Pattern */}
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
         <div style={{
           position: 'absolute',
           top: '-20px',
@@ -90,6 +107,7 @@ const Dashboard = () => {
       {/* Quick Actions */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '15px', marginBottom: '35px' }}>
         {[
+<<<<<<< HEAD
           { icon: 'fa-arrow-trend-up', label: 'Transferir', color: '#6366f1', path: '/transferir' },
           { icon: 'fa-plus', label: 'Recargar', color: '#10b981', path: null },
           { icon: 'fa-shopping-bag', label: 'Pagar', color: '#f59e0b', path: '/pagar' },
@@ -100,11 +118,27 @@ const Dashboard = () => {
               width: '60px',
               height: '60px',
               borderRadius: '20px',
+=======
+          { icon: 'fa-arrow-trend-up', label: 'Transferir', color: '#6366f1' },
+          { icon: 'fa-plus', label: 'Recargar', color: '#10b981' },
+          { icon: 'fa-shopping-bag', label: 'Pagar', color: '#f59e0b' },
+          { icon: 'fa-ellipsis', label: 'Más', color: '#94a3b8' }
+        ].map((action, i) => (
+          <div key={i} style={{ textAlign: 'center' }}>
+            <div className="glass" style={{ 
+              width: '60px', 
+              height: '60px', 
+              borderRadius: '20px', 
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
               margin: '0 auto 10px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+<<<<<<< HEAD
               cursor: action.path ? 'pointer' : 'default',
+=======
+              cursor: 'pointer',
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
               transition: 'transform 0.2s'
             }}
             onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -123,6 +157,7 @@ const Dashboard = () => {
         <a href="#" style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.85rem' }}>Ver todo</a>
       </div>
 
+<<<<<<< HEAD
       {loadingMovements ? (
         <p style={{ textAlign: 'center', color: 'var(--text-muted)' }}>Cargando movimientos...</p>
       ) : (
@@ -164,6 +199,45 @@ const Dashboard = () => {
           ))}
         </div>
       )}
+=======
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        {movements.map((move) => (
+          <div key={move.id} className="glass" style={{ 
+            padding: '16px', 
+            borderRadius: '20px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <div style={{ 
+                width: '45px', 
+                height: '45px', 
+                borderRadius: '15px', 
+                background: move.type === 'income' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <i className={`fas ${move.icon}`} style={{ 
+                  color: move.type === 'income' ? '#10b981' : '#ef4444' 
+                }}></i>
+              </div>
+              <div>
+                <p style={{ fontWeight: '600', fontSize: '0.95rem' }}>{move.title}</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{move.date}</p>
+              </div>
+            </div>
+            <p style={{ 
+              fontWeight: '700', 
+              color: move.type === 'income' ? '#10b981' : '#f8fafc'
+            }}>
+              {move.type === 'income' ? '+' : '-'}${Math.abs(move.amount).toLocaleString('es-CO')}
+            </p>
+          </div>
+        ))}
+      </div>
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
     </div>
   );
 };

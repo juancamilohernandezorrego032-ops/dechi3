@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../App';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import Swal from 'sweetalert2';
 import { transferenciasService } from '../services/api';
 
@@ -13,6 +14,14 @@ const Transfer = () => {
   const navigate = useNavigate();
   const [selectedBank, setSelectedBank] = useState(null);
   const [loading, setLoading] = useState(false);
+=======
+
+const Transfer = () => {
+  const { user } = useContext(AppContext);
+  const [amount, setAmount] = useState('0');
+  const navigate = useNavigate();
+  const [selectedBank, setSelectedBank] = useState(null);
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
 
   const handleNumber = (num) => {
     if (amount === '0') setAmount(num);
@@ -24,6 +33,7 @@ const Transfer = () => {
     else setAmount(prev => prev.slice(0, -1));
   };
 
+<<<<<<< HEAD
   // HU09 - SweetAlert2 para retroalimentación visual
   const handleTransfer = async () => {
     if (amount === '0' || !selectedBank) {
@@ -97,6 +107,12 @@ const Transfer = () => {
     } finally {
       setLoading(false);
     }
+=======
+  const handleTransfer = () => {
+    if (amount === '0') return;
+    alert(`Transferencia de $${amount} a ${selectedBank || 'un contacto'} exitosa!`);
+    navigate('/');
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
   };
 
   return (
@@ -120,10 +136,17 @@ const Transfer = () => {
             { name: 'Nuevo', initials: '+', color: 'rgba(255,255,255,0.1)' }
           ].map((c, i) => (
             <div key={i} style={{ textAlign: 'center', flexShrink: 0 }}>
+<<<<<<< HEAD
               <div style={{
                 width: '60px',
                 height: '60px',
                 borderRadius: '50%',
+=======
+              <div style={{ 
+                width: '60px', 
+                height: '60px', 
+                borderRadius: '50%', 
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
                 background: c.color,
                 display: 'flex',
                 alignItems: 'center',
@@ -149,6 +172,7 @@ const Transfer = () => {
           { name: 'Bancolombia', icon: 'BC', color: '#ffdd00', textColor: '#000' },
           { name: 'Daviplata', icon: 'D', color: '#db0000' }
         ].map((bank, i) => (
+<<<<<<< HEAD
           <div key={i}
                onClick={() => setSelectedBank(bank.name)}
                className={`glass ${selectedBank === bank.name ? 'active-bank' : ''}`}
@@ -157,15 +181,32 @@ const Transfer = () => {
             borderRadius: '20px',
             display: 'flex',
             alignItems: 'center',
+=======
+          <div key={i} 
+               onClick={() => setSelectedBank(bank.name)}
+               className={`glass ${selectedBank === bank.name ? 'active-bank' : ''}`} 
+               style={{ 
+            padding: '16px', 
+            borderRadius: '20px', 
+            display: 'flex', 
+            alignItems: 'center', 
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
             justifyContent: 'space-between',
             cursor: 'pointer',
             transition: 'all 0.3s'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+<<<<<<< HEAD
               <div style={{
                 width: '40px',
                 height: '40px',
                 borderRadius: '12px',
+=======
+              <div style={{ 
+                width: '40px', 
+                height: '40px', 
+                borderRadius: '12px', 
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
                 background: bank.color,
                 color: bank.textColor || '#fff',
                 display: 'flex',
@@ -203,14 +244,20 @@ const Transfer = () => {
       </div>
 
       {/* CTA */}
+<<<<<<< HEAD
       <button
         onClick={handleTransfer}
         disabled={loading}
+=======
+      <button 
+        onClick={handleTransfer}
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
         style={{
           width: '100%',
           padding: '18px',
           borderRadius: '20px',
           border: 'none',
+<<<<<<< HEAD
           background: loading ? '#4a4a6a' : 'var(--primary)',
           color: '#fff',
           fontWeight: '700',
@@ -219,6 +266,16 @@ const Transfer = () => {
           boxShadow: '0 10px 25px rgba(99, 102, 241, 0.4)'
         }}>
         {loading ? 'Procesando...' : 'Transferir ahora →'}
+=======
+          background: 'var(--primary)',
+          color: '#fff',
+          fontWeight: '700',
+          fontSize: '1.1rem',
+          cursor: 'pointer',
+          boxShadow: '0 10px 25px rgba(99, 102, 241, 0.4)'
+        }}>
+        Transferir ahora →
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
       </button>
 
       <style>{`

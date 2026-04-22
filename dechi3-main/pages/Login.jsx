@@ -1,8 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../App';
+<<<<<<< HEAD
 import Swal from 'sweetalert2';
 
 // HU09 - Notificaciones con SweetAlert2 (prohibido usar alert() nativo)
+=======
+
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
 const Login = () => {
   const [pin, setPin] = useState('');
   const { login } = useContext(AppContext);
@@ -19,13 +23,17 @@ const Login = () => {
     setPin(prev => prev.slice(0, -1));
   };
 
+<<<<<<< HEAD
   // HU08 - useEffect con dependencias controladas
+=======
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
   useEffect(() => {
     if (pin.length === 4) {
       const success = login(pin);
       if (!success) {
         setPin('');
         setError(true);
+<<<<<<< HEAD
         // HU09 - SweetAlert2 en vez de alert() nativo
         Swal.fire({
           icon: 'error',
@@ -49,6 +57,9 @@ const Login = () => {
           timerProgressBar: true,
           showConfirmButton: false,
         });
+=======
+        // Shake animation could go here
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
       }
     }
   }, [pin, login]);
@@ -70,9 +81,15 @@ const Login = () => {
 
         <div className="pin-input-container">
           {[1, 2, 3, 4].map((i) => (
+<<<<<<< HEAD
             <div
               key={i}
               className={`pin-dot ${pin.length >= i ? 'active' : ''} ${error ? 'error' : ''}`}
+=======
+            <div 
+              key={i} 
+              className={`pin-dot ${pin.length >= i ? 'active' : ''} ${error ? 'error' : ''}`} 
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
             />
           ))}
         </div>
@@ -99,8 +116,12 @@ const Login = () => {
         </div>
 
         <p className="signup-link" style={{ marginTop: '30px' }}>
+<<<<<<< HEAD
           {/* HU05 - Enlace de navegación entre Login y Registro */}
           ¿No tienes cuenta? <a href="/registro">Regístrate</a>
+=======
+          ¿Olvidaste tu PIN? <a href="#">Recuperar</a>
+>>>>>>> 9832fbe3d5ff1e2d4b98a00621cc189ebb4350dd
         </p>
       </div>
 
